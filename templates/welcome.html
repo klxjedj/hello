@@ -1,0 +1,31 @@
+{% extends "base.html" %} {%block title%}
+<title>welcome</title>{%endblock%}
+{% block head %}
+{{super()}}
+<script src="{{url_for('static',filename='js/axios.js')}}"></script>
+<script type="text/javascript">
+    var userid = '{{userid}}'
+</script>
+<script src="{{url_for('static',filename='js/a.js')}}"></script>
+{%endblock%}
+
+{%block content %}
+<div class="container">
+    <p>欢迎您</p>
+    <a href="/study1">实验1</a>
+    <input id="myInput" class="form-control-color" type='color' title="choose your color" />
+    <button class="btn btn-primary" id="datasubmit">click</button>
+</div>
+{%endblock%}
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript">
+    let b = document.getElementById('datasubmit')
+    let i = document.getElementById('myInput')
+
+    b.onclick = function () {
+        axios.put('/api',{a:Date.now(),b:'hao'})
+    }
+</script>
+{% endblock %}
